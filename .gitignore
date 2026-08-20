@@ -1,0 +1,19 @@
+# Virtual environment
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+dbt/aviation/profiles.yml
+**/profiles.yml
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/

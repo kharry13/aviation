@@ -1,1 +1,43 @@
-SELECT * FROM AVIATION_DB.RAW.FLIGHTS_RAW LIMIT 1;
+SELECT
+    flight_date,
+    tail_number,
+    origin,
+    destination,
+    origin_timezone,
+    destination_timezone,
+    actual_departure_local,
+    actual_arrival_local
+FROM AVIATION_DB.STAGING.INT_FLIGHT_TIMESTAMPS
+WHERE tail_number IN ('N797SK', 'N701SK')
+  AND flight_date = '2025-10-06';
+
+SELECT
+    flight_date,
+    tail_number,
+    previous_origin,
+    previous_destination,
+    origin,
+    destination,
+    previous_arrival_utc,
+    actual_departure_utc,
+    previous_arrival_delay_minutes,
+    actual_turnaround_minutes,
+    valid_aircraft_connection
+FROM AVIATION_DB.STAGING.INT_AIRCRAFT_SEQUENCE
+WHERE tail_number = 'N797SK'
+  AND flight_date = '2025-10-06'
+ORDER BY actual_departure_utc;
+
+SELECT
+    tail_number,
+    previous_flight_number,
+    current_flight_number,
+    connection_airport,
+    previous_arrival_delay_minutes,
+    actual_turnaround_minutes,
+    effective_buffer_minutes,
+    current_departure_delay_minutes
+FROM AVIATION_DB.STAGING.INT_AIRCRAFT_CONNECTIONS
+WHERE tail_number = 'N797SK'
+  AND flight_date = '2025-10-06'
+ORDER BY actual_departure_utc;

@@ -5,4 +5,5 @@ sources:
     database: AVIATION_DB
     schema: RAW
     tables:
-      - name: FLIGHTS_2025
+      - name: FLIGHTS_RAW
+      - name: AIRPORTS_RAW

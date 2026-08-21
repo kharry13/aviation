@@ -30,4 +30,13 @@ clean-targets: # directories to be removed by `dbt clean`
 models:
   aviation:
     staging:
+      +schema: STAGING
+      +materialized: table
+
+    intermediate:
+      +schema: INTERMEDIATE
+      +materialized: table
+
+    marts:
+      +schema: MARTS
       +materialized: table
